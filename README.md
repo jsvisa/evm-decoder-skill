@@ -78,7 +78,8 @@ curl -fsSL https://raw.githubusercontent.com/jsvisa/evm-decoder-skill/main/skill
 ### Via Claude Code plugin marketplace
 
 ```bash
-/plugin install evm-decoder@superpowers-marketplace
+/plugin marketplace add jsvisa/claude-marketplace
+/plugin install evm-decoder@jsvisa-marketplace
 ```
 
 ## Supported chains
