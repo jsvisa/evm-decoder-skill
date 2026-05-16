@@ -1,11 +1,11 @@
 ---
 name: evm-decoder-api
-description: Use when calling the EVM Transaction Decoder API to decode transaction calldata, event logs, or fetch verified contract ABIs on Ethereum and other EVM chains.
+description: Use when calling the EVM Transaction Decoder API to decode transaction calldata, event logs, look up function or event signatures by selector, or fetch verified contract ABIs on Ethereum and other EVM chains.
 ---
 
 # EVM Transaction Decoder API
 
-Reference for the public `/api/v1/` endpoints exposed by a deployed [bc/decoder](https://github.com/Delweng/decoder) instance.
+Reference for the public `/api/v1/` endpoints exposed by a deployed [bc/decoder](https://github.com/jsvisa/decoder) instance.
 
 ## Base URL
 
@@ -48,6 +48,24 @@ GET /api/v1/decode-event?sign=<topic0>&topics=<csv>&data=<hex>
 GET /api/v1/decode-event?sign=0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&topics=0xddf252ad...,0x000...from,0x000...to&data=0x000...value
 ```
 
+## Look Up Function / Event Signature
+
+```
+GET /api/v1/query?sign=<hex>&count=<n>
+```
+
+| Param | Required | Description |
+|-------|----------|-------------|
+| `sign` | Yes | 4-byte function selector (e.g. `0xa9059cbb`) or 32-byte event topic0 |
+| `count` | No | Max number of matching signatures to return (default `1`) |
+
+**Response:** matching human-readable signatures from the backend signature DB.
+
+**Example (ERC-20 transfer selector):**
+```
+GET /api/v1/query?sign=0xa9059cbb&count=3
+```
+
 ## Fetch Contract ABI
 
 ```
@@ -74,6 +92,7 @@ GET /api/v1/fetch-abi?address=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&chain=e
 |----------|-------------------|---------------------|
 | `/api/v1/decode` | Yes | No |
 | `/api/v1/decode-event` | Yes | No |
+| `/api/v1/query` | Yes | No |
 | `/api/v1/fetch-abi` | No | Optional (higher rate limits) |
 
 **Supported chains:** Any EVM-compatible chain. Built-in: ethereum (1), arbitrum (42161), base (8453), polygon (137), bsc (56). For any other chain, pass `chainId=<id>&rpcUrl=<url>` to use a custom RPC.
