@@ -7,6 +7,14 @@ description: Use when calling the EVM Transaction Decoder API to decode transact
 
 Reference for the public `/api/v1/` endpoints exposed by a deployed [jsvisa/decoder](https://github.com/jsvisa/decoder) instance.
 
+## How to Call
+
+Always use `curl` via Bash — never use a browser or Playwright:
+
+```bash
+curl -s "https://eth-decoder.vercel.app/api/v1/decode?data=0x..." | jq .
+```
+
 ## Base URL
 
 `https://eth-decoder.vercel.app/api/v1/`
