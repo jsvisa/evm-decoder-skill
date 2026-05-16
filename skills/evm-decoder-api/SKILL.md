@@ -5,7 +5,7 @@ description: Use when calling the EVM Transaction Decoder API to decode transact
 
 # EVM Transaction Decoder API
 
-Reference for the public `/api/v1/` endpoints exposed by a deployed [bc/decoder](https://github.com/jsvisa/decoder) instance.
+Reference for the public `/api/v1/` endpoints exposed by a deployed [jsvisa/decoder](https://github.com/jsvisa/decoder) instance.
 
 ## Base URL
 
