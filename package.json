@@ -1,0 +1,6 @@
+{
+  "name": "evm-decoder",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Claude Code skill for the EVM Transaction Decoder API"
+}
