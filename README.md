@@ -1,5 +1,11 @@
 # evm-decoder — Claude Code Skill
 
+A Claude Code skill that gives your agent reference knowledge for the [EVM Transaction Decoder](https://eth-decoder.vercel.app) API — decode transaction calldata, event logs, and fetch verified contract ABIs across any EVM chain.
+
+Install it once, then just ask Claude in plain language. No boilerplate, no copy-pasting API docs.
+
+---
+
 Give Claude the ability to decode EVM transactions, event logs, and fetch contract ABIs — just by asking.
 
 ## What you say → what Claude does
@@ -52,6 +58,12 @@ This is a **Claude Code skill** — a reference guide Claude loads automatically
 - How to handle any EVM chain (built-in or custom via `chainId` + `rpcUrl`)
 
 Claude calls [eth-decoder.vercel.app](https://eth-decoder.vercel.app) on your behalf. No setup required beyond installing the skill.
+
+### What Claude can do once installed
+
+- Decode raw EVM transaction input data (`0x...`)
+- Decode event logs given a topic0 + topics + data
+- Fetch a contract's verified ABI with automatic proxy detection (EIP-1967, beacon, OZ legacy, EIP-1167 minimal proxy)
 
 ## Installation
 
