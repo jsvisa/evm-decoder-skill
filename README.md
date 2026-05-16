@@ -71,7 +71,7 @@ Claude calls [eth-decoder.vercel.app](https://eth-decoder.vercel.app) on your be
 
 ```bash
 mkdir -p ~/.claude/skills/evm-decoder-api
-curl -fsSL https://raw.githubusercontent.com/Delweng/evm-decoder-skill/main/skills/evm-decoder-api/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/jsvisa/evm-decoder-skill/main/skills/evm-decoder-api/SKILL.md \
   -o ~/.claude/skills/evm-decoder-api/SKILL.md
 ```
 
@@ -89,7 +89,7 @@ Any other EVM chain works too — just tell Claude the chain ID and RPC URL.
 
 ## Source
 
-API powered by [Delweng/decoder](https://github.com/Delweng/decoder).
+API powered by [jsvisa/decoder](https://github.com/jsvisa/decoder).
 
 ## License
 
