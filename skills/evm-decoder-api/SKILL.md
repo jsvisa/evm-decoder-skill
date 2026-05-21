@@ -1,6 +1,6 @@
 ---
 name: evm-decoder-api
-description: Use when calling the EVM Transaction Decoder API to decode transaction calldata, event logs, look up function or event signatures by selector, or fetch verified contract ABIs on Ethereum and other EVM chains.
+description: Use when calling the EVM Transaction Decoder API to decode transaction calldata, event logs, or look up function or event signatures by selector on Ethereum and other EVM chains.
 ---
 
 # EVM Transaction Decoder API
@@ -74,34 +74,13 @@ GET /api/v1/query?sign=<hex>&count=<n>
 GET /api/v1/query?sign=0xa9059cbb&count=3
 ```
 
-## Fetch Contract ABI
-
-```
-GET /api/v1/fetch-abi?address=<addr>&chain=<chain>&apiKey=<key>
-```
-
-| Param | Required | Description |
-|-------|----------|-------------|
-| `address` | Yes | Contract address (checksummed or lowercase) |
-| `chain` | No | `ethereum` (default), `arbitrum`, `base`, `polygon`, `bsc` |
-| `apiKey` | No | Etherscan API key (falls back to server `ETHERSCAN_API_KEY`) |
-| `detectProxy` | No | `true` to force proxy detection via on-chain storage slots |
-
-Self-contained — no `BACKEND_URL` needed. Fetches from Etherscan V2, falls back to Sourcify. Auto-detects EIP-1967, EIP-1967 beacon, OZ legacy, and EIP-1167 minimal proxy patterns; merges implementation ABI into proxy ABI.
-
-**Example (USDC on Ethereum):**
-```
-GET /api/v1/fetch-abi?address=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&chain=ethereum&apiKey=YOUR_KEY
-```
-
 ## Quick Reference
 
-| Endpoint | Needs BACKEND_URL | Needs Etherscan key |
-|----------|-------------------|---------------------|
-| `/api/v1/decode` | Yes | No |
-| `/api/v1/decode-event` | Yes | No |
-| `/api/v1/query` | Yes | No |
-| `/api/v1/fetch-abi` | No | Optional (higher rate limits) |
+| Endpoint | Needs BACKEND_URL |
+|----------|-------------------|
+| `/api/v1/decode` | Yes |
+| `/api/v1/decode-event` | Yes |
+| `/api/v1/query` | Yes |
 
 **Supported chains:** Any EVM-compatible chain. Built-in: ethereum (1), arbitrum (42161), base (8453), polygon (137), bsc (56). For any other chain, pass `chainId=<id>&rpcUrl=<url>` to use a custom RPC.
 
